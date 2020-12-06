@@ -44,20 +44,14 @@ fn parse_input(data: &str) -> Result<impl Iterator<Item = Entry>, Error> {
         }))
 }
 
-pub fn part_a(data: String) -> Result<String, Error> {
-    Ok(format!(
-        "{}",
-        parse_input(&data)?
-            .filter(|e| e.policy.is_valid_1(e.passwd))
-            .count()
-    ))
+pub fn part_a(data: String) -> Result<usize, Error> {
+    Ok(parse_input(&data)?
+        .filter(|e| e.policy.is_valid_1(e.passwd))
+        .count())
 }
 
-pub fn part_b(data: String) -> Result<String, Error> {
-    Ok(format!(
-        "{}",
-        parse_input(&data)?
-            .filter(|e| e.policy.is_valid_2(e.passwd))
-            .count()
-    ))
+pub fn part_b(data: String) -> Result<usize, Error> {
+    Ok(parse_input(&data)?
+        .filter(|e| e.policy.is_valid_2(e.passwd))
+        .count())
 }

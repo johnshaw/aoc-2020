@@ -2,7 +2,7 @@ use failure::{bail, Error};
 use itertools::Itertools;
 use std::collections::HashSet;
 
-pub fn part_a(data: String) -> Result<String, Error> {
+pub fn part_a(data: String) -> Result<i64, Error> {
     let nums: HashSet<i64> = data
         .split_whitespace()
         .map(|s| s.parse().unwrap())
@@ -10,13 +10,13 @@ pub fn part_a(data: String) -> Result<String, Error> {
     for n in &nums {
         let rem = 2020 - n;
         if nums.contains(&rem) {
-            return Ok(format!("{}", n * rem));
+            return Ok(n * rem);
         }
     }
     bail!("No answer");
 }
 
-pub fn part_b(data: String) -> Result<String, Error> {
+pub fn part_b(data: String) -> Result<i64, Error> {
     let n = data
         .split_whitespace()
         .map(|s| s.parse::<i64>().unwrap())
@@ -24,5 +24,5 @@ pub fn part_b(data: String) -> Result<String, Error> {
         .find(|(a, b, c)| a + b + c == 2020)
         .map(|(a, b, c)| a * b * c)
         .unwrap();
-    Ok(format!("{}", n))
+    Ok(n)
 }

@@ -1,6 +1,4 @@
-use failure::{bail, Error};
-use lazy_static::lazy_static;
-use regex::Regex;
+use failure::Error;
 
 struct Map {
     width: usize,
@@ -47,19 +45,16 @@ fn count_trees(map: &Map, step_x: usize, step_y: usize) -> usize {
         .count()
 }
 
-pub fn part_a(data: String) -> Result<String, Error> {
+pub fn part_a(data: String) -> Result<usize, Error> {
     let map = Map::parse(&data);
-    Ok(format!("{}", count_trees(&map, 3, 1)))
+    Ok(count_trees(&map, 3, 1))
 }
 
-pub fn part_b(data: String) -> Result<String, Error> {
+pub fn part_b(data: String) -> Result<usize, Error> {
     let map = Map::parse(&data);
     let slopes = [(1, 1), (3, 1), (5, 1), (7, 1), (1, 2)];
-    Ok(format!(
-        "{}",
-        slopes
-            .iter()
-            .map(|(x, y)| count_trees(&map, *x, *y))
-            .fold(1, |a, c| a * c)
-    ))
+    Ok(slopes
+        .iter()
+        .map(|(x, y)| count_trees(&map, *x, *y))
+        .fold(1, |a, c| a * c))
 }
