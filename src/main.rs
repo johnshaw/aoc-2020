@@ -6,6 +6,7 @@ mod day03;
 mod day04;
 mod day05;
 mod day06;
+mod day07;
 
 use util::ProblemPart::*;
 use util::*;
@@ -36,5 +37,7 @@ fn main() -> Result<(), Error> {
     run(5, Second, day05::part_b)?;
     run(6, First, day06::part_a)?;
     run(6, Second, day06::part_b)?;
+    run(7, First, day07::part_a)?;
+    run(7, Second, day07::part_b)?;
     Ok(())
 }
