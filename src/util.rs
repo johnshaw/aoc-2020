@@ -25,3 +25,24 @@ pub fn read_input(day: u32) -> std::io::Result<String> {
     file.read_to_string(&mut contents)?;
     Ok(contents)
 }
+
+trait StrStuff {
+    fn split_one<'a>(&'a self, pat: &str) -> Option<(&'a str, &'a str)>;
+    fn split_whitespace_one<'a>(&'a self) -> Option<(&'a str, &'a str)>;
+}
+
+impl StrStuff for str {
+    fn split_one<'a>(&'a self, pat: &str) -> Option<(&'a str, &'a str)> {
+        let mut parts = self.split(pat);
+        let p1 = parts.next();
+        let p2 = parts.next();
+        p1.and_then(|a| p2.map(|b| (a, b)))
+    }
+
+    fn split_whitespace_one<'a>(&'a self) -> Option<(&'a str, &'a str)> {
+        let mut parts = self.split_whitespace();
+        let p1 = parts.next();
+        let p2 = parts.next();
+        p1.and_then(|a| p2.map(|b| (a, b)))
+    }
+}
