@@ -1,4 +1,4 @@
-use failure::{bail, Error};
+use failure::Error;
 use itertools::Itertools;
 use std::collections::HashSet;
 use std::convert::TryInto;
