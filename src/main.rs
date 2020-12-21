@@ -10,6 +10,7 @@ mod day07;
 mod day08;
 mod day09;
 mod day10;
+mod day11;
 
 use util::ProblemPart::*;
 use util::*;
@@ -48,5 +49,7 @@ fn main() -> Result<(), Error> {
     run(9, Second, day09::part_b)?;
     run(10, First, day10::part_a)?;
     run(10, Second, day10::part_b)?;
+    run(11, First, day11::part_a)?;
+    run(11, Second, day11::part_b)?;
     Ok(())
 }
