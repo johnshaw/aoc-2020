@@ -32,6 +32,7 @@ pub fn part_b(data: String) -> Result<i64, Error> {
         })
         .collect();
 
+    #[allow(non_snake_case)]
     let N: i64 = buses.iter().filter_map(|x| *x).product();
 
     let res: i64 = buses
@@ -40,6 +41,7 @@ pub fn part_b(data: String) -> Result<i64, Error> {
         .filter_map(|(i, n)| n.map(|n| (i as i64, n)))
         .map(|(a, n)| (n - a, n))
         .map(|(a, n)| {
+            #[allow(non_snake_case)]
             let Ni = N / n;
             let egcd = Ni.extended_gcd(&n);
             a*Ni*(if egcd.x < 0 { egcd.x + n } else {egcd.x })
